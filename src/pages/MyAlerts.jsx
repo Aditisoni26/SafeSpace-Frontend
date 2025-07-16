@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import axios from "axios";
+import API from '../utils/axios'; // adjust path based on your folder
 import { AlertContext } from "../context/AlertContext";
 
 const MyAlerts = () => {
@@ -10,8 +10,8 @@ const MyAlerts = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(
-        `http://localhost:5000/api/emergency/my-alerts/${id}`,
+      await API.delete(
+        `/api/emergency/my-alerts/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -28,8 +28,8 @@ const MyAlerts = () => {
     const fetchAlerts = async () => {
       const token = localStorage.getItem("token");
       try {
-        const res = await axios.get(
-          "http://localhost:5000/api/emergency/my-alerts",
+        const res = await API.get(
+          "/api/emergency/my-alerts",
           {
             headers: {
               Authorization: `Bearer ${token}`,

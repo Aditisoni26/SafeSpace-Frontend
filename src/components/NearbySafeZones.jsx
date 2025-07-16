@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from '../utils/axios'; // adjust path based on your folder
+
 
 const NearbySafeZones = () => {
   const [safeZones, setSafeZones] = useState([]);
@@ -11,7 +12,7 @@ const NearbySafeZones = () => {
         const { latitude, longitude } = position.coords;
 
         try {
-          const res = await axios.get("http://localhost:5000/api/nearby-safezones/nearby", {
+          const res = await API.get("/api/nearby-safezones/nearby", {
             params: { lat: latitude, lng: longitude },
           });
           setSafeZones(res.data.results || []);

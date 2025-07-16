@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";
+import API from '../utils/axios'; // adjust path based on your folder
+
 
 const AIChat = () => {
   const [prompt, setPrompt] = useState("");
@@ -11,7 +12,7 @@ const AIChat = () => {
   setLoading(true);
   setResponse("");
   try {
-    const res = await axios.post("http://localhost:5000/api/ai/chat", { prompt });
+    const res = await API.post("/api/ai/chat", { prompt });
 
     // ✅ FIXED: Extract actual message content from OpenRouter response
     const message = res.data.result; // string already in backend
