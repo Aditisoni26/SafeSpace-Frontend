@@ -15,7 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await API.post('/api/Signup', formData); // ✅ no hardcoded localhost
+      const res = await API.post('/api/signup', formData); // ✅ no hardcoded localhost
 
       showAlert(res.data.message);
       navigate('/login'); // ✅ Redirect to home after signup
