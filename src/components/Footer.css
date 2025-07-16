@@ -1,0 +1,12 @@
+.footer a:hover {
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+div h5 {
+    color: #1e6fd1;
+}
+
+.footer {
+    margin-top: 1rem;
+}
