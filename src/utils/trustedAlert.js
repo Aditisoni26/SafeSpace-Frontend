@@ -1,12 +1,12 @@
 // utils/trustedAlert.js
-import axios from 'axios';
+import API from '../utils/axios'; // adjust path if inside deep folders
 
 export const sendTrustedContactAlert = async (position, showAlert) => {
   const token = localStorage.getItem("token");
 
   try {
-    const res = await axios.post(
-      "http://localhost:5000/api/emergency/my-alerts/send",
+    const res = await API.post(
+      "/api/emergency/my-alerts/send",
       { location: position },
       {
         headers: {

@@ -1,5 +1,5 @@
 import React, { useState, useEffect ,useContext} from 'react';
-import axios from 'axios';
+import API from '../utils/axios'; // adjust path if inside deep folders
 import { AlertContext } from '../context/AlertContext'; 
 const AddTrustedContact = () => {
   const [contacts, setContacts] = useState([]);
@@ -9,7 +9,7 @@ const { showAlert } = useContext(AlertContext);// ✅
 
   const fetchContacts = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/emergency/trusted-contacts", {
+      const res = await API.get("/api/emergency/trusted-contacts", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setContacts(res.data);
@@ -30,7 +30,7 @@ const { showAlert } = useContext(AlertContext);// ✅
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/emergency/trusted-contacts", formData, {
+      const res = await API.post("/api/emergency/trusted-contacts", formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       showAlert(res.data.message);
@@ -44,7 +44,7 @@ const { showAlert } = useContext(AlertContext);// ✅
 
   const handleDelete = async (id) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/api/emergency/trusted-contacts/${id}`, {
+      const res = await API.delete(`/api/emergency/trusted-contacts/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       showAlert(res.data.message);

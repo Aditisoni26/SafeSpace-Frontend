@@ -1,5 +1,5 @@
 // import React, { useContext } from 'react';
-// import axios from 'axios';
+// import API from '../utils/axios'; // adjust path if inside deep folders
 // import { AlertContext } from '../context/AlertContext'; // ✅ Import context
 // import { handleAlert } from '../utils/alertUtils';
 
@@ -32,7 +32,7 @@
 
 // export default EmergencyButton;
 import React, { useContext, useState } from 'react';
-// import axios from 'axios';
+// import API from '../utils/axios'; // adjust path if inside deep folders
 import { AlertContext } from '../context/AlertContext';
 import { handleAlert } from '../utils/alertUtils';
 import EmergencyRecorder from './EmergencyRecorder'; // ✅ Add recorder

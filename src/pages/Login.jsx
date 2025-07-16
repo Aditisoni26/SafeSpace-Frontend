@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import API from '../utils/axios'; // adjust path if inside deep folders
 import { AlertContext } from '../context/AlertContext';
 
 const Login = () => {
@@ -15,7 +15,8 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/login', formData);
+      const res = await API.post('/api/login', formData); // ✅ no hardcoded localhost
+
       showAlert(res.data.message, 'success');
 
       // ✅ Save token and user

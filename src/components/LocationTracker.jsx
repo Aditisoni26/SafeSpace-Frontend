@@ -1,6 +1,6 @@
 // src/components/LocationTracker.jsx
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import API from '../utils/axios'; // adjust path if inside deep folders
 
 const LocationTracker = () => {
   const [position, setPosition] = useState(null);
@@ -19,8 +19,8 @@ const LocationTracker = () => {
         setPosition({ latitude, longitude });
 
         try {
-          await axios.post(
-            'http://localhost:5000/api/location/update',
+          await API.post(
+            '/api/location/update',
             { location: { lat: latitude, lng: longitude } },
             {
               headers: {

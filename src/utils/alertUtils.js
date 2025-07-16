@@ -1,5 +1,5 @@
 // src/utils/alertUtils.js
-import axios from 'axios';
+import API from '../utils/axios'; // adjust path if inside deep folders
 
 export const handleAlert = (showAlert) => {
   if (!navigator.geolocation) {
@@ -23,7 +23,7 @@ export const handleAlert = (showAlert) => {
 
         try {
           // 1️⃣ Send emergency alert to /api/emergency
-          const alertRes = await axios.post("http://localhost:5000/api/emergency", {
+          const alertRes = await API.post("/api/emergency", {
             location,
             message: "Emergency! Please help.",
           }, { headers });
@@ -31,7 +31,7 @@ export const handleAlert = (showAlert) => {
           console.log("Alert sent:", alertRes.data.message);
 
           // 2️⃣ Notify Trusted Contacts
-          await axios.post("http://localhost:5000/api/emergency/my-alerts/send", {
+          await API.post("/api/emergency/my-alerts/send", {
             location,
           }, { headers });
 
