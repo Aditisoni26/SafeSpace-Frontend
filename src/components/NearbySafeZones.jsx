@@ -8,23 +8,26 @@ const NearbySafeZones = () => {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const { latitude, longitude } = position.coords;
+  async (position) => {
+    const { latitude, longitude } = position.coords;
+    console.log("📍 Coordinates:", latitude, longitude);
 
-        try {
-          const res = await API.get("/api/nearby-safezones/nearby", {
-            params: { lat: latitude, lng: longitude },
-          });
-          setSafeZones(res.data.results || []);
-        } catch (err) {
-          console.error("Failed to fetch safe zones:", err);
-          setError("Failed to fetch nearby safe zones.");
-        }
-      },
-      () => {
-        setError("Location access denied.");
-      }
-    );
+    try {
+      const res = await API.get("/api/nearby-safezones/nearby", {
+        params: { lat: latitude, lng: longitude },
+      });
+      setSafeZones(res.data.results || []);
+    } catch (err) {
+      console.error("❌ API Error:", err.response?.data || err.message);
+      setError("Failed to fetch nearby safe zones.");
+    }
+  },
+  (err) => {
+    console.warn("⚠️ Geolocation error:", err.message);
+    setError("Location access denied.");
+  }
+);
+
   }, []);
 
   return (
