@@ -15,9 +15,23 @@ const AIChat = () => {
     const res = await API.post("/api/ai/chat", { prompt });
 
     // ✅ FIXED: Extract actual message content from OpenRouter response
-    const message = res.data.result; // string already in backend
+    const raw = res.data?.result || "";
+console.log("RAW AI OUTPUT:", JSON.stringify(raw, null, 2));
 
-    setResponse(message || "✅ AI responded but no text found.");
+
+const clean = raw
+  .replace(/<s>/gi, "")
+  .replace(/<\/s>/gi, "")
+  .replace(/\[\/s\]/gi, "")
+
+  .trim();
+
+setResponse(
+  clean.length > 0
+    ? clean
+    : "🤖 I'm here! Could you rephrase or ask a bit more clearly?"
+);
+
   } catch (err) {
     console.error("❌ AI Error:", err);
     setResponse("❌ Failed to get response from AI.");

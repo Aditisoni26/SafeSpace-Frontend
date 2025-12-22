@@ -42,6 +42,7 @@ const EmergencyButton = () => {
   const [startRecording, setStartRecording] = useState(false);
 
   const handleEmergency = () => {
+    showAlert("🚨 Sending emergency alert...", "warning");
     handleAlert(showAlert);       // ✅ Your existing alert
     setStartRecording(true);      // ✅ Trigger recording
   };

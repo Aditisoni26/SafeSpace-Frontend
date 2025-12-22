@@ -14,6 +14,7 @@ import AlertBox from "./components/AlertBox";
 import AIChat from "./pages/AIChat";
 import NearbySafeZones from "./components/NearbySafeZones";
 import AutoLogout from "./components/AutoLogout"; // ✅
+
 import "./App.css";
 
 const EmergencyPage = () => (
