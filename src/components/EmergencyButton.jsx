@@ -1,10 +1,10 @@
 // import React, { useContext } from 'react';
 // import API from '../utils/axios'; // adjust path if inside deep folders
-// import { AlertContext } from '../context/AlertContext'; // ✅ Import context
+// import { AlertContext } from '../context/AlertContext'; // Import context
 // import { handleAlert } from '../utils/alertUtils';
 
 // const EmergencyButton = () => {
-//   const { showAlert } = useContext(AlertContext); // ✅ Use context
+//   const { showAlert } = useContext(AlertContext); //  Use context
 
 //   // const handleEmergency = async () => {
 //   //   const token = localStorage.getItem('token');
@@ -14,10 +14,10 @@
 //   //         Authorization: `Bearer ${token}`
 //   //       }
 //   //     });
-//   //     showAlert(res.data.message); // ✅ Use showAlert
+//   //     showAlert(res.data.message); //  Use showAlert
 //   //   } catch (error) {
 //   //     console.error("Emergency alert error:", error);
-//   //     showAlert('Failed to send emergency alert'); // ✅ Use showAlert for error
+//   //     showAlert('Failed to send emergency alert'); //  Use showAlert for error
 //   //   }
 //   // };
 
@@ -35,7 +35,7 @@ import React, { useContext, useState } from 'react';
 // import API from '../utils/axios'; // adjust path if inside deep folders
 import { AlertContext } from '../context/AlertContext';
 import { handleAlert } from '../utils/alertUtils';
-import EmergencyRecorder from './EmergencyRecorder'; // ✅ Add recorder
+import EmergencyRecorder from './EmergencyRecorder'; //  Add recorder
 
 const EmergencyButton = () => {
   const { showAlert } = useContext(AlertContext);
@@ -43,8 +43,8 @@ const EmergencyButton = () => {
 
   const handleEmergency = () => {
     showAlert("🚨 Sending emergency alert...", "warning");
-    handleAlert(showAlert);       // ✅ Your existing alert
-    setStartRecording(true);      // ✅ Trigger recording
+    handleAlert(showAlert);       //  existing alert
+    setStartRecording(true);      //  Trigger recording
   };
 
   return (

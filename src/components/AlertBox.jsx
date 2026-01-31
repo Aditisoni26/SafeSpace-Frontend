@@ -14,7 +14,7 @@ const AlertBox = () => {
       >
         <span>{alert.message}</span>
 
-        {/* Simple 'X' close button */}
+        {/* X' close button */}
         <button
           onClick={() => setAlert(null)}
           className="btn btn-sm bg-transparent border-0 text-dark fs-3"

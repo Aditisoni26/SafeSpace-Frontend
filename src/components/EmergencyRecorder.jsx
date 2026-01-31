@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
-import API from "../utils/axios"; // ✅ Axios instance with baseURL and withCredentials
-
+import API from "../utils/axios"; 
 const EmergencyRecorder = ({ triggerRecording }) => {
   useEffect(() => {
     if (!triggerRecording) return;
@@ -11,7 +10,7 @@ const EmergencyRecorder = ({ triggerRecording }) => {
 
     const startRecording = async () => {
       try {
-        // ✅ Ask for camera + mic permission
+        // Ask for camera + mic permission
         stream = await navigator.mediaDevices.getUserMedia({
           video: true,
           audio: true,
@@ -23,7 +22,7 @@ const EmergencyRecorder = ({ triggerRecording }) => {
         mediaRecorder.onstop = async () => {
           const blob = new Blob(chunks, { type: "video/webm" });
 
-          // ✅ Upload to Cloudinary
+          // Upload to Cloudinary
           const formData = new FormData();
           formData.append("file", blob);
           formData.append(
@@ -42,9 +41,9 @@ const EmergencyRecorder = ({ triggerRecording }) => {
           );
 
           const data = await res.json();
-          console.log("✅ Video uploaded to Cloudinary:", data.secure_url);
+          console.log("Video uploaded to Cloudinary:", data.secure_url);
 
-          // ✅ Save video URL to your backend using Axios instance
+          // Save video URL to your backend using Axios instance
           try {
             await API.post(
               "/api/emergency/store-recording",
@@ -55,7 +54,7 @@ const EmergencyRecorder = ({ triggerRecording }) => {
                 },
               }
             );
-            console.log("✅ Video URL saved to backend");
+            console.log(" Video URL saved to backend");
           } catch (error) {
             console.error("❌ Failed to save video to backend:", error);
           }
@@ -64,7 +63,7 @@ const EmergencyRecorder = ({ triggerRecording }) => {
         mediaRecorder.start();
         console.log("🎥 Recording started");
 
-        // ✅ Stop after 30 seconds
+        //  Stop after 30 seconds
         setTimeout(() => {
           mediaRecorder.stop();
           stream.getTracks().forEach((track) => track.stop());

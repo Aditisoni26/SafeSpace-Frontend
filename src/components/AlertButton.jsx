@@ -12,7 +12,7 @@ const EmergencyButton = () => {
 
     setIsSending(true);
 
-    // 🔥 INSTANT FEEDBACK
+    // INSTANT FEEDBACK
     showAlert("🚨 Sending emergency alert...", "warning");
 
     try {

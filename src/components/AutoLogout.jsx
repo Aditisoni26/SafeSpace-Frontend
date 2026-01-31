@@ -14,7 +14,7 @@ const AutoLogout = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
         localStorage.removeItem("expiry");
-        alert("⏰ Session expired. You have been logged out.");
+        alert(" Session expired. You have been logged out.");
         navigate("/login");
       }
     };
